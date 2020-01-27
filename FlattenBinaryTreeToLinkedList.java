@@ -4,12 +4,12 @@ package leetcode;
  * FlattenBinaryTreeToLinkedList
  */
 
-class Node {
+class TreeNode {
     int val;
-    Node left;
-    Node right;
+    TreeNode left;
+    TreeNode right;
 
-    Node(int x) {
+    TreeNode(int x) {
         val = x;
     }
 
@@ -22,21 +22,21 @@ class Node {
 
 public class FlattenBinaryTreeToLinkedList {
 
-    public static Node flatten(Node root) {
+    public static TreeNode flatten(TreeNode root) {
 
         if (root == null) {
             return null;
         } else {
-            Node resultLeft = flatten(root.left);
+            TreeNode resultLeft = flatten(root.left);
 
-            Node resultRight = flatten(root.right);
+            TreeNode resultRight = flatten(root.right);
 
             root.left = null;
 
             if (resultLeft != null) {
                 root.right = resultLeft;
                 if (resultRight != null) {
-                    Node prev = null;
+                    TreeNode prev = null;
                     while (resultLeft != null) {
                         prev = resultLeft;
                         resultLeft = resultLeft.right;
@@ -56,12 +56,12 @@ public class FlattenBinaryTreeToLinkedList {
 
     public static void main(String[] args) {
 
-        Node node1 = new Node(1);
-        Node node2 = new Node(2);
-        Node node3 = new Node(3);
-        Node node4 = new Node(4);
-        Node node5 = new Node(5);
-        Node node6 = new Node(6);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
 
         node1.left = node2;
         node1.right = node5;
@@ -71,7 +71,7 @@ public class FlattenBinaryTreeToLinkedList {
 
         node5.right = node6;
 
-        Node treeNode = flatten(node1);
+        TreeNode treeNode = flatten(node1);
 
         System.out.println(treeNode);
 
