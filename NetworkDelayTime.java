@@ -1,3 +1,4 @@
+package leetcode;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class NetworkDelayTime {
                 }
                 edges.add(new Edge(to, weight));
             }
+
 
             int[] weightMatrix = new int[N];
             boolean[] visited = new boolean[N];
