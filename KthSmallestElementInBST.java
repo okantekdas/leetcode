@@ -39,7 +39,7 @@ public class KthSmallestElementInBST {
         }
 
         kthSmallest(root.left);
-        if (result.size() <= key) {
+        if (result.size() < key) {
             result.add(root.val);
         }
         kthSmallest(root.right);
