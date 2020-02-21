@@ -1,23 +1,22 @@
 package leetcode;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
 
 /**
  * MaxLevelSumOfBinaryTree
  */
 public class MaxLevelSumOfBinaryTree {
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 
     public static int maxLevelSum(TreeNode root) {
 
@@ -60,16 +59,17 @@ public class MaxLevelSumOfBinaryTree {
     }
 
     public static void main(String[] args) {
+        MaxLevelSumOfBinaryTree msobt = new MaxLevelSumOfBinaryTree();
 
-        TreeNode node1 = new TreeNode(989);
+        TreeNode node1 = msobt.new TreeNode(989);
         TreeNode node2 = null;
-        TreeNode node3 = new TreeNode(10250);
-        TreeNode node4 = new TreeNode(98693);
-        TreeNode node5 = new TreeNode(-89388);
+        TreeNode node3 = msobt.new TreeNode(10250);
+        TreeNode node4 = msobt.new TreeNode(98693);
+        TreeNode node5 = msobt.new TreeNode(-89388);
         TreeNode node6 = null;
         TreeNode node7 = null;
         TreeNode node8 = null;
-        TreeNode node9 = new TreeNode(-32127);
+        TreeNode node9 = msobt.new TreeNode(-32127);
 
         node1.left = node2;
         node1.right = node3;

@@ -8,20 +8,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
-
 /**
  * KthSmallestElementInBST
  */
 public class KthSmallestElementInBST {
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 
     public int kthSmallest(TreeNode root, int k) {
 
@@ -50,6 +50,8 @@ public class KthSmallestElementInBST {
 
     static int key = 0;
 
+    static KthSmallestElementInBST kseib = new KthSmallestElementInBST();
+
     public static TreeNode stringToTreeNode(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
@@ -59,7 +61,7 @@ public class KthSmallestElementInBST {
 
         String[] parts = input.split(",");
         String item = parts[0];
-        TreeNode root = new TreeNode(Integer.parseInt(item));
+        TreeNode root = kseib.new TreeNode(Integer.parseInt(item));
         Queue<TreeNode> nodeQueue = new LinkedList<>();
         nodeQueue.add(root);
 
@@ -75,7 +77,7 @@ public class KthSmallestElementInBST {
             item = item.trim();
             if (!item.equals("null")) {
                 int leftNumber = Integer.parseInt(item);
-                node.left = new TreeNode(leftNumber);
+                node.left = kseib.new TreeNode(leftNumber);
                 nodeQueue.add(node.left);
             }
 
@@ -87,7 +89,7 @@ public class KthSmallestElementInBST {
             item = item.trim();
             if (!item.equals("null")) {
                 int rightNumber = Integer.parseInt(item);
-                node.right = new TreeNode(rightNumber);
+                node.right = kseib.new TreeNode(rightNumber);
                 nodeQueue.add(node.right);
             }
         }

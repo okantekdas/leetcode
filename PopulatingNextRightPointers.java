@@ -3,36 +3,35 @@ package leetcode;
 import java.util.LinkedList;
 import java.util.List;
 
-class Node {
-    public String val;
-    public Node left;
-    public Node right;
-    public Node next;
-
-    public Node() {
-    }
-
-    public Node(String _val) {
-        val = _val;
-    }
-
-    public Node(String _val, Node _left, Node _right, Node _next) {
-        val = _val;
-        left = _left;
-        right = _right;
-        next = _next;
-    }
-
-}
-
 /**
  * PopulatingNextRightPointers
  */
 public class PopulatingNextRightPointers {
+    class Node {
+        public String val;
+        public Node left;
+        public Node right;
+        public Node next;
 
-    public static Node connect(Node root) {
+        public Node() {
+        }
+
+        public Node(final String _val) {
+            val = _val;
+        }
+
+        public Node(final String _val, final Node _left, final Node _right, final Node _next) {
+            val = _val;
+            left = _left;
+            right = _right;
+            next = _next;
+        }
+
+    }
+
+    public static Node connect(final Node root) {
         if (root != null) {
-            List<Node> list = new LinkedList<>();
+            final List<Node> list = new LinkedList<>();
             list.add(root);
             root.next = null;
 
@@ -40,7 +39,7 @@ public class PopulatingNextRightPointers {
             int i = 0;
             int level = 0;
             while (list.get(i) != null) {
-                Node currentNode = list.get(i);
+                final Node currentNode = list.get(i);
                 if (previous != null) {
                     previous.next = currentNode;
                 }
@@ -66,15 +65,17 @@ public class PopulatingNextRightPointers {
         return root;
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(final String[] args) throws InterruptedException {
 
-        Node node1 = new Node("1");
-        Node node2 = new Node("2");
-        Node node3 = new Node("3");
-        Node node4 = new Node("4");
-        Node node5 = new Node("5");
-        Node node6 = new Node("6");
-        Node node7 = new Node("7");
+        PopulatingNextRightPointers pnrp = new PopulatingNextRightPointers();
+
+        final Node node1 = pnrp.new Node("1");
+        final Node node2 = pnrp.new Node("2");
+        final Node node3 = pnrp.new Node("3");
+        final Node node4 = pnrp.new Node("4");
+        final Node node5 = pnrp.new Node("5");
+        final Node node6 = pnrp.new Node("6");
+        final Node node7 = pnrp.new Node("7");
 
         node1.left = node2;
         node1.right = node3;
@@ -87,7 +88,7 @@ public class PopulatingNextRightPointers {
 
         connect(node1);
 
-        int a = 5;
+        final int a = 5;
 
     }
 

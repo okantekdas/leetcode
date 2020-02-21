@@ -6,20 +6,20 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
-
 /**
  * DeleteNodeInBST
  */
 public class DeleteNodeInBST {
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 
     public TreeNode deleteNode(TreeNode current, int key) {
 
@@ -69,6 +69,8 @@ public class DeleteNodeInBST {
         return findSmallest(root.left);
     }
 
+    static DeleteNodeInBST dnb = new DeleteNodeInBST();
+
     public static TreeNode stringToTreeNode(String input) {
         input = input.trim();
         input = input.substring(1, input.length() - 1);
@@ -78,7 +80,7 @@ public class DeleteNodeInBST {
 
         String[] parts = input.split(",");
         String item = parts[0];
-        TreeNode root = new TreeNode(Integer.parseInt(item));
+        TreeNode root = dnb.new TreeNode(Integer.parseInt(item));
         Queue<TreeNode> nodeQueue = new LinkedList<>();
         nodeQueue.add(root);
 
@@ -94,7 +96,7 @@ public class DeleteNodeInBST {
             item = item.trim();
             if (!item.equals("null")) {
                 int leftNumber = Integer.parseInt(item);
-                node.left = new TreeNode(leftNumber);
+                node.left = dnb.new TreeNode(leftNumber);
                 nodeQueue.add(node.left);
             }
 
@@ -106,7 +108,7 @@ public class DeleteNodeInBST {
             item = item.trim();
             if (!item.equals("null")) {
                 int rightNumber = Integer.parseInt(item);
-                node.right = new TreeNode(rightNumber);
+                node.right = dnb.new TreeNode(rightNumber);
                 nodeQueue.add(node.right);
             }
         }

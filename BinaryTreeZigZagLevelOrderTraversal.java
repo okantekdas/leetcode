@@ -6,20 +6,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    TreeNode(int x) {
-        val = x;
-    }
-}
-
 /**
  * ZigZagLevelOrderTraversal
  */
 public class BinaryTreeZigZagLevelOrderTraversal {
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
 
     public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
 
@@ -27,7 +27,7 @@ public class BinaryTreeZigZagLevelOrderTraversal {
         if (root == null) {
             return solution;
         } else {
-            Queue<TreeNode> queue = new LinkedList();
+            Queue<TreeNode> queue = new LinkedList<TreeNode>();
             boolean zigzag = false;
             queue.add(root);
             while (!queue.isEmpty()) {
@@ -68,11 +68,13 @@ public class BinaryTreeZigZagLevelOrderTraversal {
 
     public static void main(String[] args) {
 
-        TreeNode node1 = new TreeNode(3);
-        TreeNode node2 = new TreeNode(9);
-        TreeNode node3 = new TreeNode(20);
-        TreeNode node4 = new TreeNode(15);
-        TreeNode node5 = new TreeNode(7);
+        BinaryTreeZigZagLevelOrderTraversal btzzlot = new BinaryTreeZigZagLevelOrderTraversal();
+
+        TreeNode node1 = btzzlot.new TreeNode(3);
+        TreeNode node2 = btzzlot.new TreeNode(9);
+        TreeNode node3 = btzzlot.new TreeNode(20);
+        TreeNode node4 = btzzlot.new TreeNode(15);
+        TreeNode node5 = btzzlot.new TreeNode(7);
         // TreeNode node6 = new TreeNode(6);
 
         node1.left = node2;

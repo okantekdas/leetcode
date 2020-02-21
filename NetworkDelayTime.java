@@ -4,23 +4,22 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.locks.Lock;
-
-class Edge {
-    int to;
-    int weight;
-
-    public Edge(int to, int weight) {
-        this.to = to;
-        this.weight = weight;
-    }
-
-}
 
 /**
  * NetworkDelayTime
  */
 public class NetworkDelayTime {
+
+    class Edge {
+        int to;
+        int weight;
+
+        public Edge(int to, int weight) {
+            this.to = to;
+            this.weight = weight;
+        }
+
+    }
 
     public static int networkDelayTime(int[][] times, int N, int K) {
 
@@ -40,9 +39,8 @@ public class NetworkDelayTime {
                     edges = new ArrayList<>();
                     fromToEdges.put(from, edges);
                 }
-                edges.add(new Edge(to, weight));
+                edges.add(ndt.new Edge(to, weight));
             }
-
 
             int[] weightMatrix = new int[N];
             boolean[] visited = new boolean[N];
@@ -91,6 +89,8 @@ public class NetworkDelayTime {
             return previousTotal;
         }
     }
+
+    static NetworkDelayTime ndt = new NetworkDelayTime();
 
     public static void main(String[] args) {
 
