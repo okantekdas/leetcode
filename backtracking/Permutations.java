@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,7 @@ public class Permutations {
                     continue;
 
                 } else {
-                    List<Integer> solution  = new ArrayList<>(oldSolution); 
+                    List<Integer> solution = new ArrayList<>(oldSolution);
                     solution.add(nums[i]);
                     permute(nums, solution);
                 }
