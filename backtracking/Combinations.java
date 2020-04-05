@@ -33,6 +33,36 @@ public class Combinations {
         return result;
     }
 
+    public List<List<Integer>> calculateCombinations(int[] nums, int size, int index) {
+
+        if (size == 0) {
+            List<Integer> combination = new ArrayList<>();
+            List<List<Integer>> combinations = new ArrayList<>();
+            combinations.add(combination);
+            return combinations;
+        }
+
+        List<List<Integer>> combinations = new ArrayList<>();
+        for (int i = index; i < nums.length; i++) {
+            List<List<Integer>> subCombinations = calculateCombinations(nums, size - 1, i + 1);
+
+            for (List<Integer> subCombination : subCombinations) {
+
+                List<Integer> copyOfSubCombination = new ArrayList<>();
+                for (int value : subCombination) {
+                    copyOfSubCombination.add(value);
+                }
+
+                copyOfSubCombination.add(nums[i]);
+                combinations.add(copyOfSubCombination);
+
+            }
+            combinations.addAll(subCombinations);
+        }
+
+        return combinations;
+    }
+
     final static List<List<Integer>> result = new ArrayList<>();
 
     public static void main(String[] args) {
