@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * NetworkDelayTime
- */
+/* https://leetcode.com/problems/network-delay-time/ */
 public class NetworkDelayTime {
 
     class Edge {
