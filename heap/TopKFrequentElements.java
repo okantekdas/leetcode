@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
 
-
 /* https://leetcode.com/problems/top-k-frequent-elements */
 public class TopKFrequentElements {
     public class Element {
@@ -33,7 +32,7 @@ public class TopKFrequentElements {
 
             @Override
             public int compare(Element o1, Element o2) {
-                if (o1.count < o2.count)
+                if (o1.count > o2.count)
                     return -1;
                 else if (o1.count == o2.count) {
                     return 0;
