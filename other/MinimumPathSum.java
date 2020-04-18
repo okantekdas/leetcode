@@ -38,6 +38,8 @@ public class MinimumPathSum {
         return grid[grid.length - 1][grid[0].length - 1];
     }
 
+
+    //30 ms
     public int minPathSumAlternate2(int[][] grid) {
 
         if (grid == null || grid.length == 0) {
@@ -99,6 +101,7 @@ public class MinimumPathSum {
         return current.cost;
     }
 
+    //158 ms
     public int minPathSumAlternate1(int[][] grid) {
 
         if (grid == null || grid.length == 0) {
