@@ -2,6 +2,7 @@ package leetcode.other;
 
 import java.util.List;
 
+/* https://leetcode.com/explore/featured/card/30-day-leetcoding-challenge/530/week-3/3306/ */
 public class LeftmostColumnWithAtLeastOne {
 
     interface BinaryMatrix {
@@ -19,14 +20,17 @@ public class LeftmostColumnWithAtLeastOne {
         int y = 0;
         int x = m - 1;
 
+        int solution = -1;
         while (0 <= x && y < n) {
-            if (binaryMatrix.get(x, y) == 1) {
+            System.out.println("x:" + x + " y:" + y);
+            if (binaryMatrix.get(y, x) == 1) {
+                solution = x;
                 x--;
             } else {
                 y++;
             }
         }
-        return x;
+        return solution;
     }
 
 }
