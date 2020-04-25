@@ -2,70 +2,127 @@ package leetcode.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+/* https://leetcode.com/problems/expression-add-operators */
 public class ExpressionAddOperators {
 
-    public class Solution {
-        int calculation;
-        String value;
+    Set<String> expressions;
 
-        public Solution(int calculation, String value) {
-            this.calculation = calculation;
-            this.value = value;
-            if (calculation == globalTarget) {
-                expressions.add(value);
-            }
-        }
-
-    }
-
-    List<String> expressions = new ArrayList<>();
-
-    int globalTarget = 0;
+    List<String> solutions = new ArrayList<>();
 
     public List<String> addOperators(String num, int target) {
-        globalTarget = target;
-        calculateSolution(num, target);
+        expressions = calculateSolution(num);
 
-        return expressions;
-    }
+        for (String expression : expressions) {
+            String[] operandsStr = expression.split("[^0-9]");
 
-    public List<Solution> calculateSolution(String num, int target) {
+            double subsolution = 0;
+            if (operandsStr.length == 1) {
+                subsolution = Double.valueOf(expression);
+            } else {
+                char[] operators = new char[operandsStr.length - 1];
+                int count = 0;
+                for (char c : expression.toCharArray()) {
+                    if (c == '+' || c == '-' || c == '*') {
+                        operators[count] = c;
+                        count++;
+                    }
+                }
 
-        List<Solution> solutions = new ArrayList<>();
-        if (num.length() == 0) {
-            return solutions;
-        }
-        solutions.add(new Solution(Integer.valueOf(num), num));
+                int first = Integer.valueOf(operandsStr[0]);
+                char prevOperator = ' ';
+                subsolution = first;
+                for (int i = 1; i < operandsStr.length; i++) {
 
-        for (int i = 1; i < num.length(); i++) {
-            List<Solution> leftSolutions = calculateSolution(num.substring(0, i), target);
-            List<Solution> rightSolutions = calculateSolution(num.substring(i, num.length()), target);
-            cartesianProduct(leftSolutions, rightSolutions, solutions);
+                    char operator = operators[i - 1];
+                    int second = Integer.valueOf(operandsStr[i]);
+
+                    if (operator == '+') {
+                        subsolution += second;
+                    }
+                    if (operator == '-') {
+                        subsolution -= second;
+                    }
+                    if (operator == '*') {
+
+                        if (prevOperator == '-') {
+                            subsolution += first;
+                            subsolution -= first * second;
+                        } else {
+                            subsolution -= first;
+                            subsolution += first * second;
+                        }
+
+                    }
+
+                    if (operator == '*') {
+                        first = first * second;
+                        if (prevOperator == '-') {
+                            first *= -1;
+                        }
+
+                    } else {
+                        first = second;
+                    }
+
+                    prevOperator = operator;
+
+                }
+            }
+
+            if (subsolution == target) {
+                solutions.add(expression);
+            }
+
         }
 
         return solutions;
     }
 
-    public void cartesianProduct(List<Solution> leftSolutions, List<Solution> rightSolutions,
-            List<Solution> solutions) {
+    public Set<String> calculateSolution(String num) {
 
-        for (Solution leftSolution : leftSolutions) {
-            for (Solution rightSolution : rightSolutions) {
-                solutions.add(new Solution(leftSolution.calculation + rightSolution.calculation,
-                        leftSolution.value + "+" + rightSolution.value));
-                solutions.add(new Solution(leftSolution.calculation - rightSolution.calculation,
-                        leftSolution.value + "-" + rightSolution.value));
-                solutions.add(new Solution(leftSolution.calculation * rightSolution.calculation,
-                        leftSolution.value + "*" + rightSolution.value));
-            }
+        Set<String> localExpressions = new HashSet<>();
+
+        if (num.isEmpty()) {
+            return localExpressions;
         }
+
+        if (num.length() > 1 && num.startsWith("0")) {
+            // do nothing;
+        } else {
+            localExpressions.add(num);
+        }
+        for (int i = 1; i < num.length(); i++) {
+
+            String currentNum = num.substring(0, i);
+            if (currentNum.length() > 1 && currentNum.startsWith("0")) {
+                continue;
+            }
+            String remaningNum = num.substring(i, num.length());
+            Set<String> remaningExpressions = calculateSolution(remaningNum);
+            cartesianProduct(localExpressions, remaningExpressions, currentNum);
+        }
+
+        return localExpressions;
+
+    }
+
+    public void cartesianProduct(Set<String> localExpressions, Set<String> remaningExpressions, String currentNum) {
+
+        for (String remaningExpression : remaningExpressions) {
+            localExpressions.add(currentNum + "+" + remaningExpression);
+            localExpressions.add(currentNum + "-" + remaningExpression);
+            localExpressions.add(currentNum + "*" + remaningExpression);
+        }
+
     }
 
     public static void main(String[] args) {
-        String num = "105";
-        int target = 5;
+        String num = "000";
+        int target = 0;
 
         List<String> solution = new ExpressionAddOperators().addOperators(num, target);
         System.out.println(Arrays.toString(solution.toArray()));
