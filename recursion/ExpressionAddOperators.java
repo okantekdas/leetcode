@@ -2,14 +2,12 @@ package leetcode.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /* https://leetcode.com/problems/expression-add-operators */
 public class ExpressionAddOperators {
 
-    Set<String> expressions;
+    List<String> expressions;
 
     List<String> solutions = new ArrayList<>();
 
@@ -82,9 +80,9 @@ public class ExpressionAddOperators {
         return solutions;
     }
 
-    public Set<String> calculateSolution(String num) {
+    public List<String> calculateSolution(String num) {
 
-        Set<String> localExpressions = new HashSet<>();
+        List<String> localExpressions = new ArrayList<>();
 
         if (num.isEmpty()) {
             return localExpressions;
@@ -102,7 +100,7 @@ public class ExpressionAddOperators {
                 continue;
             }
             String remaningNum = num.substring(i, num.length());
-            Set<String> remaningExpressions = calculateSolution(remaningNum);
+            List<String> remaningExpressions = calculateSolution(remaningNum);
             cartesianProduct(localExpressions, remaningExpressions, currentNum);
         }
 
@@ -110,7 +108,7 @@ public class ExpressionAddOperators {
 
     }
 
-    public void cartesianProduct(Set<String> localExpressions, Set<String> remaningExpressions, String currentNum) {
+    public void cartesianProduct(List<String> localExpressions, List<String> remaningExpressions, String currentNum) {
 
         for (String remaningExpression : remaningExpressions) {
             localExpressions.add(currentNum + "+" + remaningExpression);
