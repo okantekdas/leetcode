@@ -7,16 +7,16 @@ public class NumberOfDiceRollsWithTargetSum {
 
     public int numRollsToTarget(int d, int f, int target) {
 
-        int[][] memo = new int[d + 1][target + 1];
-        for (int[] dice : memo) {
+        long[][] memo = new long[d + 1][target + 1];
+        for (long[] dice : memo) {
             Arrays.fill(dice, -1);
         }
 
-        return calculateNumRollsToTarget(d, f, target, memo);
+        return (int) calculateNumRollsToTarget(d, f, target, memo);
 
     }
 
-    public int calculateNumRollsToTarget(int d, int f, int target, int[][] memo) {
+    public long calculateNumRollsToTarget(int d, int f, int target, long[][] memo) {
         if (d == 0 || target <= 0) {
             return d == target ? 1 : 0;
         }
@@ -27,8 +27,10 @@ public class NumberOfDiceRollsWithTargetSum {
 
         memo[d][target] = 0;
         for (int i = 1; i <= f; i++) {
-            memo[d][target] = (memo[d][target] + calculateNumRollsToTarget(d - 1, f, target - i, memo)) % 1000000007;
+            memo[d][target] += calculateNumRollsToTarget(d - 1, f, target - i, memo);
         }
+
+        memo[d][target] %= 1000000007;
 
         return memo[d][target];
     }
