@@ -2,6 +2,7 @@ package leetcode.other;
 
 import java.util.Stack;
 
+/* https://leetcode.com/problems/valid-parentheses */
 public class ValidParentheses {
 
     public boolean isValid(String s) {
