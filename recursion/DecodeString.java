@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.recursion;
 
 /* https://leetcode.com/problems/decode-string/ */
 public class DecodeString {
