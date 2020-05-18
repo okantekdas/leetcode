@@ -3,12 +3,79 @@ package leetcode.other;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 /* https://leetcode.com/problems/find-all-anagrams-in-a-string */
 public class FindAllAnagramsInAString {
 
+    //10 ms
     public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> solution = new ArrayList<>();
+        int[] charCount = new int[26];
+
+        for (char c : p.toCharArray()) {
+            charCount[c - 97]++;
+        }
+
+        HashMap<Character, LinkedList<Integer>> charToPosition = new HashMap<>();
+
+        int startIndex = -1;
+        for (int i = 0; i < s.length(); i++) {
+
+            char currentChar = s.charAt(i);
+
+            if (charCount[currentChar - 97] > 0) {
+                if (charToPosition.isEmpty()) {
+                    startIndex = i;
+                }
+
+                LinkedList<Integer> charPositions = charToPosition.get(currentChar);
+                if (charPositions == null) {
+                    charPositions = new LinkedList<>();
+                    charToPosition.put(currentChar, charPositions);
+                }
+
+                if (charPositions.size() == charCount[currentChar - 97]) {
+                    // count overflow, start counting from next to first char to current one
+                    int indexOfFirstCurrentChar = charPositions.peek();
+
+                    // clear until index of first currentChar
+                    for (int j = startIndex; j <= indexOfFirstCurrentChar; j++) {
+
+                        char temp = s.charAt(j);
+                        LinkedList<Integer> charPos = charToPosition.get(temp);
+                        charPos.poll();
+                    }
+
+                    charPositions.add(i);
+                    startIndex = indexOfFirstCurrentChar + 1;
+
+                } else {
+                    charPositions.add(i);
+
+                    if (i - startIndex + 1 == p.length()) {
+                        // found one
+                        solution.add(startIndex);
+                        charPositions = charToPosition.get(s.charAt(startIndex));
+
+                        charPositions.poll();
+                        startIndex++;
+
+                    }
+                }
+
+            } else {
+                // start over
+                charToPosition = new HashMap<>();
+            }
+        }
+
+        return solution;
+    }
+
+    //14 ms
+    public List<Integer> findAnagramsAlternate(String s, String p) {
 
         List<Integer> solution = new ArrayList<>();
 
