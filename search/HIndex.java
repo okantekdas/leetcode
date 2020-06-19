@@ -1,5 +1,7 @@
 package leetcode.search;
 
+import java.util.Arrays;
+
 public class HIndex {
     public int hIndex(int[] citations) {
         if (citations == null) {
