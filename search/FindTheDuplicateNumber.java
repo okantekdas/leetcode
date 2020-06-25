@@ -1,5 +1,7 @@
 package leetcode.search;
 
+import java.util.Arrays;
+
 /* https://leetcode.com/problems/find-the-duplicate-number/ */
 public class FindTheDuplicateNumber {
 
