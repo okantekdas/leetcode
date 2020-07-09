@@ -6,9 +6,7 @@ import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
- * MaximumWidthOfBinaryTree
- */
+/* https://leetcode.com/problems/maximum-width-of-binary-tree */
 public class MaximumWidthOfBinaryTreeModified {
 
     class TreeNode {
