@@ -5,6 +5,7 @@ import java.util.List;
 
 /* https://leetcode.com/problems/subsets/ */
 public class Subsets {
+
     public List<List<Integer>> subsets(int[] nums) {
 
         return subsets(nums, 0);
@@ -42,12 +43,11 @@ public class Subsets {
         return cartesianProduct;
     }
 
-}
-
     public static void main(String[] args) {
         int[] nums = { 1, 2, 3 };
 
         List<List<Integer>> subsets = new Subsets().subsets(nums);
-        System.out.println();
+        System.out.println(subsets.toString());
     }
+
 }
