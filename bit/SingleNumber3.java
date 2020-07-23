@@ -11,12 +11,12 @@ public class SingleNumber3 {
             sum ^= num;
         }
 
-        int lowestBit = sum & (-sum);
+        int diff = Integer.lowestOneBit(sum);
 
         int a = 0;
         int b = 0;
         for (int num : nums) {
-            if ((num & lowestBit) == 0) {
+            if ((diff & num) == 0) {
                 a ^= num;
             } else {
                 b ^= num;
