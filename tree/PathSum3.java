@@ -28,18 +28,31 @@ public class PathSum3 {
     }
 
     public int pathSum(TreeNode root, int sum) {
+        int solution = 0;
         if (root == null) {
-            return 0;
+            return solution;
         }
-        return pathSumHelper(root, sum) + pathSum(root.left, sum) + pathSum(root.right, sum);
+        solution += pathSumHelper(root, sum);
+
+        solution += pathSum(root.left, sum);
+        solution += pathSum(root.right, sum);
+
+        return solution;
     }
 
     public int pathSumHelper(TreeNode root, int sum) {
+
         if (root == null) {
             return 0;
         }
-        return (root.val - sum == 0 ? 1 : 0) + pathSumHelper(root.left, sum - root.val)
-                + pathSumHelper(root.right, sum - root.val);
+        int solution = 0;
+
+        solution += pathSumHelper(root.left, sum - root.val);
+        solution += pathSumHelper(root.right, sum - root.val);
+        if (sum - root.val == 0) {
+            solution++;
+        }
+        return solution;
     }
 
     static PathSum3 ps3 = new PathSum3();
