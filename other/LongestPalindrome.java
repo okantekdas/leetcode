@@ -1,23 +1,18 @@
 package leetcode.other;
 
-import java.util.HashMap;
-
 public class LongestPalindrome {
     public int longestPalindrome(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
-        }
 
-        HashMap<Character, Integer> charToCount = new HashMap<>();
+        int[] charCount = new int[58];
 
         for (char c : s.toCharArray()) {
-            int count = charToCount.getOrDefault(c, 0);
-            charToCount.put(c, ++count);
+            charCount[c - 'A']++;
         }
 
         boolean hasOdd = false;
         int length = 0;
-        for (int count : charToCount.values()) {
+        for (int i = 0; i < charCount.length; i++) {
+            int count = charCount[i];
             if (count == 1) {
                 hasOdd = true;
             } else {
@@ -28,7 +23,6 @@ public class LongestPalindrome {
                     hasOdd = true;
                 }
             }
-
         }
 
         return hasOdd == true ? length + 1 : length;
