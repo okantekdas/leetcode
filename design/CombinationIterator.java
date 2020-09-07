@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/* https://leetcode.com/problems/iterator-for-combination */
 public class CombinationIterator {
 
     int index = 0;
