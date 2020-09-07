@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.hashtable;
 
 public class LongestPalindrome {
     public int longestPalindrome(String s) {

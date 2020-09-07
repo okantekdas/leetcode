@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.hashtable;
 
 import java.util.HashMap;
 
@@ -12,7 +12,7 @@ public class JewelsAndStones {
         for (char c : S.toCharArray()) {
             Integer count = stoneToCount.get(c);
             if (count == null) {
-                count = new Integer(0);
+                count = 0;
                 stoneToCount.put(c, count);
             }
             stoneToCount.put(c, ++count);
