@@ -1,8 +1,5 @@
 package leetcode.tree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /* https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/ */
 public class SumOfRootToLeafBinaryNumbers {
 
