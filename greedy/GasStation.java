@@ -12,7 +12,6 @@ public class GasStation {
             totalGas += gas[i];
             totalCost += cost[i];
             netCost += gas[i]-cost[i];
-            
             min = Math.min(min, netCost);
             
         }
