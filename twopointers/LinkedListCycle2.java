@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.twopointers;
 
 /* https://leetcode.com/problems/linked-list-cycle-ii */
 public class LinkedListCycle2 {

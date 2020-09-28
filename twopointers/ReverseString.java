@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.twopointers;
 
 public class ReverseString {
 

@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.twopointers;
 
 /* https://leetcode.com/problems/max-consecutive-ones-iii/ */
 public class MaxConsecutiveOnes3 {

@@ -1,4 +1,4 @@
-package leetcode.other;
+package leetcode.twopointers;
 
 /* https://leetcode.com/problems/palindrome-linked-list/ */
 public class PalindromeLinkedList {
