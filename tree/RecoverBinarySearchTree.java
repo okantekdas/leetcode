@@ -1,6 +1,7 @@
 package leetcode.tree;
 
 /* https://leetcode.com/problems/recover-binary-search-tree/ */
+/* Runtime: 2 ms, faster than 80.55% Memory Usage: 39.1 MB, less than 99.79%  */
 public class RecoverBinarySearchTree {
     public class TreeNode {
         int val;
