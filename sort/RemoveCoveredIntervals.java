@@ -3,7 +3,7 @@ package leetcode.sort;
 import java.util.Arrays;
 
 /* https://leetcode.com/problems/remove-covered-intervals/ */
-/* Runtime: 4 ms, faster than 97.46% Memory Usage: 39.8 MB, less than 50.76%*/
+/* Runtime: 4 ms, faster than 97.46% Memory Usage: 39.3 MB, less than 94.67%*/
 public class RemoveCoveredIntervals {
     public int removeCoveredIntervals(int[][] intervals) {
         if (intervals.length == 1) {
