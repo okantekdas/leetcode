@@ -1,4 +1,4 @@
-package leetcode.sort;
+package leetcode.linkedlist;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,9 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * SortList
- */
+/* https://leetcode.com/problems/sort-list */
 public class SortList {
 
     static SortList sl = new SortList();
@@ -17,12 +15,68 @@ public class SortList {
         int val;
         ListNode next;
 
+        ListNode() {
+        }
+
         ListNode(int x) {
             val = x;
         }
     }
 
+    /* Runtime: 3 ms, faster than 97.49% */
     public ListNode sortList(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode mid = findMid(head);
+        ListNode left = sortList(head);
+        ListNode right = sortList(mid);
+
+        return sort(left, right);
+    }
+
+    private ListNode sort(ListNode left, ListNode right) {
+
+        ListNode head = new ListNode();
+        ListNode tail = head;
+
+        while (left != null && right != null) {
+            if (left.val < right.val) {
+                tail.next = left;
+                left = left.next;
+
+            } else {
+                tail.next = right;
+                right = right.next;
+            }
+            tail = tail.next;
+
+        }
+
+        tail.next = left != null ? left : right;
+        return head.next;
+    }
+
+    private ListNode findMid(ListNode head) {
+
+        ListNode left = head;
+        ListNode right = head.next;
+        while (right != null && right.next != null) {
+            left = left.next;
+            right = right.next.next;
+        }
+        ListNode leftPrev = left;
+        left = left.next;
+        leftPrev.next = null;
+        return left;
+    }
+
+    /*
+     * Runtime: 9 ms Memory Usage: 42.9 MB
+     */
+    public ListNode sortListAlternate(ListNode head) {
 
         if (head == null) {
             return null;
