@@ -24,25 +24,11 @@ public class BinaryTreeTilt {
     }
 
     int tiltSum = 0;
-
     public int findTilt(TreeNode root) {
         constructTiltTree(root);
 
         return tiltSum;
     }
-
-    // private int sumAndTraverseTree(TreeNode root) {
-
-    //     if (root == null) {
-    //         return 0;
-    //     }
-    //     int leftSum = sumAndTraverseTree(root.left);
-    //     int rightSum = sumAndTraverseTree(root.right);
-
-    //     int currentVal = root.val;
-    //     return leftSum + rightSum + currentVal;
-
-    // }
 
     public int constructTiltTree(TreeNode root) {
 
