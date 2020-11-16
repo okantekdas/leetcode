@@ -3,9 +3,8 @@ package leetcode.tree;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * PopulatingNextRightPointers
- */
+/* https://leetcode.com/problems/populating-next-right-pointers-in-each-node */
+/* Runtime: 114 ms, faster than 7.59% */
 public class PopulatingNextRightPointers {
     class Node {
         public String val;
@@ -87,9 +86,6 @@ public class PopulatingNextRightPointers {
         node3.right = node7;
 
         connect(node1);
-
-        final int a = 5;
-
     }
 
 }
