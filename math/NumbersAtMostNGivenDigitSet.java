@@ -3,7 +3,7 @@ package leetcode.math;
 import java.util.Arrays;
 
 /* https://leetcode.com/problems/numbers-at-most-n-given-digit-set/ */
-/* Runtime: 1 ms, faster than 58.12% Memory Usage: 36.1 MB, less than 85.47% */
+/* Runtime: 1 ms, faster than 58.12% Memory Usage: 35.8 MB, less than 99.15% */
 public class NumbersAtMostNGivenDigitSet {
     public int atMostNGivenDigitSet(String[] digits, int n) {
 
