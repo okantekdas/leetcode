@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 /* https://leetcode.com/problems/partition-equal-subset-sum/ */
+/* Runtime: 29 ms, faster than 56.48% Memory Usage: 46.8 MB, less than 26.61% */
 public class PartitionEqualSubsetSum {
 
     HashMap<Integer, HashSet<Integer>> indexToFound = new HashMap<>();
