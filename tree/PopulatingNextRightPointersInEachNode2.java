@@ -148,7 +148,6 @@ public class PopulatingNextRightPointersInEachNode2 {
         Node node5 = p.new Node(5);
         Node node6 = p.new Node(6);
         Node node7 = p.new Node(7);
-        Node node8 = p.new Node(8);
 
         node1.left = node2;
         node1.right = node3;
