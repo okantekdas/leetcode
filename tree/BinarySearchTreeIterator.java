@@ -27,7 +27,6 @@ public class BinarySearchTreeIterator {
     class BSTIterator {
 
         int index = 0;
-
         ArrayList<Integer> values = new ArrayList<>();
 
         public BSTIterator(TreeNode root) {
