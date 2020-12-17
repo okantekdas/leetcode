@@ -6,7 +6,6 @@ import java.util.HashMap;
 /* Runtime: 59 ms, faster than 92.39% Memory Usage: 58.1 MB, less than 75.35% */
 public class FourSum2 {
     public int fourSumCount(int[] A, int[] B, int[] C, int[] D) {
-
         HashMap<Integer, Integer> sumToCount = new HashMap<>();
 
         for (int i = 0; i < A.length; i++) {
