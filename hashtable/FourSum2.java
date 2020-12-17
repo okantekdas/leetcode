@@ -10,7 +10,7 @@ public class FourSum2 {
 
         for (int i = 0; i < A.length; i++) {
             for (int j = 0; j < B.length; j++) {
-                int sum = A[i] + B[i];
+                int sum = A[i] + B[j];
                 sumToCount.put(sum, sumToCount.getOrDefault(sum, 0) + 1);
             }
         }
@@ -18,7 +18,7 @@ public class FourSum2 {
         int solution = 0;
         for (int i = 0; i < C.length; i++) {
             for (int j = 0; j < D.length; j++) {
-                int sum = C[i] + D[i];
+                int sum = C[i] + D[j];
                 solution += sumToCount.getOrDefault(-1 * sum, 0);
             }
         }
