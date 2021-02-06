@@ -7,30 +7,22 @@ import java.util.HashMap;
 public class LongestHarmoniousSubsequence {
     public int findLHS(int[] nums) {
 
-        HashMap<Integer, int[]> numToIndexes = new HashMap<>();
+        HashMap<Integer, Integer> numToCount = new HashMap<>();
 
         for (int i = 0; i < nums.length; i++) {
-            int[] indexes = numToIndexes.get(nums[i]);
-            if (indexes == null) {
-                indexes = new int[3];
-                indexes[0] = i;
-                indexes[2]++;
-                numToIndexes.put(nums[i], indexes);
-            } else {
-                indexes[1] = i;
-                indexes[2]++;
-            }
+            numToCount.put(nums[i], numToCount.getOrDefault(nums[i], 0) + 1);
+
         }
 
         int maxLength = 0;
 
         for (int i = 0; i < nums.length; i++) {
             int number = nums[i];
-            int[] indexes = numToIndexes.get(number);
-            int[] indexesBigger = numToIndexes.get(number + 1);
+            int countSmaller = numToCount.get(number);
+            int countBigger = numToCount.getOrDefault(number + 1, 0);
+            if (countBigger > 0) {
+                maxLength = Math.max(maxLength, countSmaller + countBigger);
 
-            if (indexesBigger != null) {
-                maxLength = Math.max(maxLength, indexes[2] + indexesBigger[2]);
             }
         }
 
