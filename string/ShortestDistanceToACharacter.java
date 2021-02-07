@@ -3,14 +3,15 @@ package leetcode.string;
 import java.util.Arrays;
 
 /* https://leetcode.com/problems/shortest-distance-to-a-character/ */
+/* Runtime: 1 ms, faster than 96.80% Memory Usage: 39.2 MB, less than 64.28% */
 public class ShortestDistanceToACharacter {
     public int[] shortestToChar(String s, char c) {
 
         int left = -1;
         int right = -1;
         int current = 0;
-
         int[] solution = new int[s.length()];
+
         while (current < s.length()) {
 
             if (s.charAt(current) == c) {
@@ -21,7 +22,6 @@ public class ShortestDistanceToACharacter {
                 // compare with left
                 // compare with right
                 // get closest
-
                 if (right < current) {
                     right = right < 0 ? 0 : right + 1;
                     while (right < s.length() && s.charAt(right) != c) {
@@ -34,7 +34,6 @@ public class ShortestDistanceToACharacter {
                 solution[current] = Math.min(leftDistance, rightDistance);
             }
             current++;
-
         }
 
         return solution;
