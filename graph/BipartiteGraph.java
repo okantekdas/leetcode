@@ -93,34 +93,32 @@ public class BipartiteGraph {
         return true;
     }
 
-    /* Runtime: 0 ms, faster than 100.00% Memory Usage: 39.6 MB, less than 50.88% */
     private static boolean isBipartite(int i, int[][] graph, Node[] visitedNodes, boolean prevValue) {
 
         if (i >= graph.length) {
             return true;
+        }
+        if (graph[i].length == 0) {
+            return true;
+        }
+
+        if (visitedNodes[i] != null) {
+            if (visitedNodes[i].value == prevValue) {
+                return false;
+            }
+
         } else {
-            if (graph[i].length == 0) {
-                return true;
-            } else {
-                if (visitedNodes[i] != null) {
-                    if (visitedNodes[i].value == prevValue) {
-                        return false;
-                    }
-
-                } else {
-                    Node visitedNode = bg.new Node(i, !prevValue);
-                    visitedNodes[i] = visitedNode;
-                    for (int j = 0; j < graph[i].length; j++) {
-                        boolean result = isBipartite(graph[i][j], graph, visitedNodes, !prevValue);
-                        if (!result) {
-                            return result;
-                        }
-
-                    }
+            Node visitedNode = bg.new Node(i, !prevValue);
+            visitedNodes[i] = visitedNode;
+            for (int j = 0; j < graph[i].length; j++) {
+                boolean result = isBipartite(graph[i][j], graph, visitedNodes, !prevValue);
+                if (!result) {
+                    return result;
                 }
-                return true;
+
             }
         }
+        return true;
 
     }
 
