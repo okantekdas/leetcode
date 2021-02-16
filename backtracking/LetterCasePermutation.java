@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /* https://leetcode.com/problems/letter-case-permutation/ */
-/* Runtime: 4 ms, faster than 54.34% Memory Usage: 39.8 MB, less than 68.40% */
+/* Runtime: 3 ms, faster than 62.51% Memory Usage: 39.8 MB, less than 68.40% */
 public class LetterCasePermutation {
     public List<String> letterCasePermutation(String S) {
 
