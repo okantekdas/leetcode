@@ -3,6 +3,7 @@ package leetcode.stack;
 import java.util.Stack;
 
 /* https://leetcode.com/problems/score-of-parentheses/ */
+/* Runtime: 0 ms, faster than 100.00% Memory Usage: 37.1 MB, less than 60.25%  */
 public class ScoreOfParentheses {
     public int scoreOfParentheses(String S) {
 
